@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+Add Post
+{% endblock title %}
+
+{% block body %}
+<div class="container my-4">
+    <form action="/addPost/" method="POST">
+    {% csrf_token %}
+        <div class="form-group">
+            <label for="postTitle">Title</label>
+            <input type="text" class="form-control" id="postTitle" placeholder="add title here" name="postTitle">
+        </div>
+        <div class="form-group">
+            <label for="postAuthor">Author</label>
+            <input type="text" class="form-control" id="postAuthor" placeholder="name of author" name="postAuthor">
+        </div>
+        <div class="form-group">
+            <input type="hidden" class="form-control" id="postSlug" value="post-{{count}}" name="postSlug">
+        </div>
+
+        <div class="form-group">
+            <label for="postContent">Content</label>
+            <textarea class="form-control" id="postContent" rows="3" name="postContent"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Post</button>
+    </form>
+</div>
+{% endblock body %}
